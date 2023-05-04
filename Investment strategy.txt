@@ -1,0 +1,46 @@
+
+
+Getting started: Investment strategy  
+
+Portfolio assets allocation : We need to choose a specific market .
+Assets ETFs securities, Bonds , cryptos 
+Holdings (number of shares) based on client initial investment 
+Unit cost based on market price
+Time horizon 
+
+Weights are based on risk tolerance assessment.
+Aggressive Risk tolerance : securities bonds Cryptos EFT’s weight 50% ,30% ,20%
+Moderate Risk tolerance : securities bonds EFT’s weight 60% , 40%
+Conservative Risk tolerance: Large Cap securities ETFs ,bonds EFT’s weight 40% , 60%
+
+We will choose top ETF’s based on performance by comparing the ETF’s to their indexes and their beta and how ow they are correlated.(use of visualization) (Monte Carlo simulation )
+
+We will check the dividend yield history for the ETF’s (use of visualization)
+
+
+Efficient return 
+Estimates of expected return for each assets : expected returns of each assets is equal to the mean of its historical return.
+
+Max Sharpe ratio -(MRP) using Efficient frontier (visualization)
+The Maximum Sharpe ratio (MSR) is the Tangent portfolio located in the presence of risk free assets 
+
+Efficient frontier: The set of optimal portfolios that offer the highest expected return for a defined set of risk (the lower risk for an expected return) 
+
+MAR + Risk free rate  = CAPM (capital assets pricing model) 
+- it describe the relationship between the expected return and the risk of investing in security which is equal plus the risk premium which is beta of the security.
+
+Efficient frontier using Pandas : to predict the future portfolio return 
+
+1- Collect the historical data of the ETF’s daily returns 
+2- get annualized retunes , variance and covariance matrix
+3- create a mean -variance plot (to check the trade off between the risk and return for each portfolio)
+
+
+Min volatility (Min Standard deviation , Variance, Beta  ): (located on the far left side of the efficient frontier)
+     We calculate the ETF volatility by using its the standard deviation the lower the less volatile
+
+Efficient Portfolio Risk
+Covariance measure the volatility of the assets and how to correlate with other assets (The assets in the portfolio should be uncorrelated to get the benefit of diversification)
+
+
+Portfolio that maximize the Sharpe ratio are portfolios on the efficient frontier they are called tangency portfolio since the tangent line from the risk free rate to the effect frontier taps the efficient frontier at portfolios that maximize the Sharpe ratio.
