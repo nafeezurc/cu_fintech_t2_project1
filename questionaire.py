@@ -1,8 +1,5 @@
 import fire
 import questionary
-import pandas as pd
-import numpy as np
-from pathlib import Path
 
 def customer_data():
     name = questionary.text("What is your name?").ask()
