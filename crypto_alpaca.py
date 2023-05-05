@@ -8,7 +8,7 @@ from datetime import datetime
 import pandas as pd
 
 
-def get_crpto_df(from_date,to_date = datetime.now(),crypto_exchange=["BTC/USD", "ETH/USD"]):
+def get_crypto_df(from_date,to_date = datetime.now(),crypto_exchange=["BTC/USD", "ETH/USD"]):
     """Gets live Crypto Data
 
     Keyword arguments:
@@ -26,9 +26,14 @@ def get_crpto_df(from_date,to_date = datetime.now(),crypto_exchange=["BTC/USD", 
                             start=from_date
                             )
     crypto_df = client.get_crypto_bars(request_params).df
+    crypto_df=crypto_df.reset_index().set_index('timestamp')
 
-    crypto_dict ={}
+    crypto_dict = {}
 
-    print(crypto_df)
+    for crypto in crypto_exchange:
+        crypto_dict[crypto] = crypto_df[crypto_df["symbol"]==crypto].drop('symbol',axis=1)
 
-get_crpto_df(datetime(2022, 7, 1))
+    final_df = pd.concat(crypto_dict.values(),axis=1,keys=crypto_exchange)
+
+    return final_df
+#print(get_cryptos_df(datetime(2022, 7, 1)))
