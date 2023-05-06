@@ -8,7 +8,7 @@ from datetime import datetime
 import pandas as pd
 
 
-def get_crypto_df(from_date,to_date = datetime.now(),crypto_exchange=["BTC/USD", "ETH/USD"]):
+def get_crypto_df(from_date=pd.Timestamp("2018-01-01", tz="America/New_York").isoformat(),to_date = datetime.now(),crypto_exchange=["BTC/USD", "ETH/USD"]):
     """Gets live Crypto Data
 
     Keyword arguments:
