@@ -4,11 +4,11 @@ from alpaca.data.requests import CryptoBarsRequest
 from alpaca.data.timeframe import TimeFrame
 
 
-from datetime import datetime
+from datetime import datetime,timedelta
 import pandas as pd
 
 
-def get_crypto_df(from_date=pd.Timestamp("2018-01-01", tz="America/New_York").isoformat(),to_date = datetime.now(),crypto_exchange=["BTC/USD", "ETH/USD"]):
+def get_crypto_df(from_date=pd.Timestamp("2018-01-01", tz="America/New_York").isoformat(),to_date=datetime.now()-timedelta(days=1),crypto_exchange=["BTC/USD", "ETH/USD"]):
     """Gets live Crypto Data
 
     Keyword arguments:

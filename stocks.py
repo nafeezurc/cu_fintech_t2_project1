@@ -82,5 +82,34 @@ def get_stocks_based_on_risk(risk):
 
     return tickers
 
+def simulate(ticker_dict,risk,years):
+    # Use the hvplot to plot the close for each ticker
+    if risk == "high":
+        MC_simulation = MCSimulation(
+            portfolio_data=ticker_dict,
+            weights=[0.15, 0.15, 0.15, 0.15,0.20, 0.20],
+            num_simulation=500,
+            num_trading_days=252*years,
+        )
 
-    
+    if risk == "mid":
+        MC_simulation = MCSimulation(
+            portfolio_data=ticker_dict,
+            weights=[0.15, 0.15, 0.15, 0.15, 0.20, 0.20],
+            num_simulation=500,
+            num_trading_days=252*years,
+        )
+
+    if risk == "low":
+        MC_simulation = MCSimulation(
+            portfolio_data=ticker_dict,
+            weights=[0.20, 0.20, 0.20, 0.20, 0.20],
+            num_simulation=500,
+            num_trading_days=252*years,
+        )
+
+    MC_simulation.calc_cumulative_return()
+    MC_simulation.plot_simulation()
+    MC_simulation.plot_distribution()
+
+    return MC_simulation.summarize_cumulative_return()
