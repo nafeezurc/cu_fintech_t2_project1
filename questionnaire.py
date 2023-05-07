@@ -3,6 +3,8 @@ import fire
 import questionary
 from questionary import Validator, ValidationError, prompt
 from questionary import Style
+import stocks
+import crypto_alpaca
 
 
 # Applying style to the input questions
@@ -169,19 +171,22 @@ def interpret(customer_data):
     #Evaluating the score and assigning risk level
     if total in range(10,20):
         print("Low risk investment")
-        return "Low risk investment"
+        return ("Low risk investment","low")
     elif total in range(20,30):
         print("Medium risk investment")
-        return "Medium risk investment"
+        return ("Medium risk investment","mid")
     elif total > 30:
         print("High risk investment")
-        return "High risk investment"
+        return ("High risk investment","high")
     
 
 def run():
     customer_responses = customer_data()
 
-    interpret(customer_responses)
+    _, risk = interpret(customer_responses)
+
+    crypto_df = crypto_alpaca.get_crypto_df()
+    stocks_df = stocks.get_stocks_df(risk)
 
 if __name__ == "__main__":
     fire.Fire(run)

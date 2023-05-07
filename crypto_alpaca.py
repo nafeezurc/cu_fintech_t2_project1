@@ -8,13 +8,13 @@ from datetime import datetime,timedelta
 import pandas as pd
 
 
-def get_crypto_df(from_date=pd.Timestamp("2018-01-01", tz="America/New_York").isoformat(),to_date=datetime.now()-timedelta(days=1),crypto_exchange=["BTC/USD", "ETH/USD"]):
+def get_crypto_df(from_date=datetime(2018,1,1),to_date=datetime.now()-timedelta(days=1),crypto_exchange=["BTC/USD", "ETH/USD"]):
     """Gets live Crypto Data
 
     Keyword arguments:
     :param datetime from_date: initial date
     :param dateime to_date: last date
-    :param list tickers -- currency Pairs list to retrieve
+    :param list crypto_exchange -- currency Pairs list to retrieve
     """
     if from_date is None:
         raise AttributeError("from_date is a required field")
@@ -36,4 +36,18 @@ def get_crypto_df(from_date=pd.Timestamp("2018-01-01", tz="America/New_York").is
     final_df = pd.concat(crypto_dict.values(),axis=1,keys=crypto_exchange)
 
     return final_df
+
+def get_crypto_df_column(crpyto_df,column):
+    """Gets an specific column from a Dataframe with multiple cryptos
+
+    Keyword arguments:
+    :param DataFrame crypto_df: Crpyto Exchanges DataFrame
+    :param string column: column to get
+    """
+    dict_close = {}
+
+    for cypto_coin in crpyto_df:
+        dict_close[cypto_coin]=crpyto_df[cypto_coin].filter([column])
+
+    return pd.concat(dict_close.values(),axis=1,keys=dict_close.keys())
 #print(get_cryptos_df(datetime(2022, 7, 1)))
