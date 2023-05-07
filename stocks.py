@@ -57,10 +57,11 @@ def get_stocks_df(risk="high",
     
     ticker_dict = {}
     #print(ticker_data["symbol"].unique())
-    
+    #create dictionary that contains all tickers and filters out all the columns save for close column
     for ticker in tickers:
         ticker_dict[ticker] = ticker_data[ticker_data["symbol"]==ticker].filter(['close']) #.drop('symbol', axis=1)
 
+    #creates the DataFrame with all elements one next to each other
     ticker_data = pd.concat(ticker_dict.values(),axis=1, keys=tickers)
     
     return ticker_data

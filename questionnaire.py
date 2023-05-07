@@ -5,6 +5,7 @@ from questionary import Validator, ValidationError, prompt
 from questionary import Style
 import stocks
 import crypto_alpaca
+import pandas as pd
 
 
 # Applying style to the input questions
@@ -187,6 +188,10 @@ def run():
 
     crypto_df = crypto_alpaca.get_crypto_df()
     stocks_df = stocks.get_stocks_df(risk)
+
+    portfolio = pd.concat([stocks_df,crypto_df],axis=1).dropna()
+
+    print(stocks.simulate(portfolio,risk,300,10))
 
 if __name__ == "__main__":
     fire.Fire(run)
