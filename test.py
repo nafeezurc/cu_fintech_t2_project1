@@ -25,4 +25,4 @@ stocks_df.index = stocks_df.index.normalize()
 
 portfolio = pd.concat([stocks_df,crypto_df],axis=1).dropna()
 
-stocks.simulate(risk,portfolio)
+print(stocks.simulate(portfolio,risk,300,10))

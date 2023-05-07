@@ -6,6 +6,9 @@ import alpaca_trade_api as tradeapi
 from MCForecastTools import MCSimulation
 import yfinance as yf
 from datetime import datetime, timedelta
+import matplotlib.pyplot as plt
+from matplotlib import interactive
+
 
 
 def get_stocks_df(risk="high",
@@ -97,7 +100,7 @@ def get_stocks_based_on_risk(risk):
 
     return tickers
 
-def simulate(ticker_df,risk,years):
+def simulate(ticker_df,risk,simulations_amount,years):
     """Gets a list of tickers from an specific date
 
     Keyword arguments:
@@ -109,35 +112,39 @@ def simulate(ticker_df,risk,years):
     if risk == "high":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
-            weights=[0.15, 0.15, 0.15, 0.15,0.20, 0.20],
-            num_simulation=500,
+            weights=[0.15, 0.15, 0.15, 0.15,0.20, 0.20,0.0],
+            num_simulation=simulations_amount,
             num_trading_days=252*years,
         )
 
-    if risk == "mid":
+    elif risk == "mid":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
             weights=[0.15, 0.15, 0.15, 0.15, 0.20, 0.20],
-            num_simulation=500,
+            num_simulation=simulations_amount,
             num_trading_days=252*years,
         )
 
-    if risk == "low":
+    elif risk == "low":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
             weights=[0.20, 0.20, 0.20, 0.20, 0.20],
-            num_simulation=500,
+            num_simulation=simulations_amount,
             num_trading_days=252*years,
         )
 
     #Initiates cummulative return simulation
     MC_simulation.calc_cumulative_return()
 
+    interactive(False)
     #Plots the simulation results
-    MC_simulation.plot_simulation()
+    a=MC_simulation.plot_simulation()
+    plt.figure(1)
 
     #Plots the result distribution for each iteration.
-    MC_simulation.plot_distribution()
+    b=MC_simulation.plot_distribution()
+    plt.figure(2)
+    plt.show()
 
     #returns the distribution summary table (statistical results)
     return MC_simulation.summarize_cumulative_return()
