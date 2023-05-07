@@ -186,7 +186,7 @@ def run():
     customer_responses = customer_data()
     
     #deconstructs name an income for later use from customer_responses list
-    name,income,*_ = customer_responses
+    name,*_,investment_amount = customer_responses
 
     #gets risk level from response interpretation
     _, risk = interpret(customer_responses)
