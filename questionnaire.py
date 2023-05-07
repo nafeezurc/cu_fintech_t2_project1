@@ -182,13 +182,23 @@ def interpret(customer_data):
     
 
 def run():
+    #starts questionary and stores the data in a list
     customer_responses = customer_data()
+    
+    #deconstructs name an income for later use from customer_responses list
+    name,income,*_ = customer_responses
 
+    #gets risk level from response interpretation
     _, risk = interpret(customer_responses)
 
+    #retrieves crypto data and stock data, organizes it into a DataFrame with close dates
     crypto_df = crypto_alpaca.get_crypto_df()
     stocks_df = stocks.get_stocks_df(risk)
 
+    #normalizing date values to have the same day in each index
+    crypto_df.index = crypto_df.index.normalize()
+    stocks_df.index = stocks_df.index.normalize()
+    
     portfolio = pd.concat([stocks_df,crypto_df],axis=1).dropna()
 
     print(stocks.simulate(portfolio,risk,300,10))
