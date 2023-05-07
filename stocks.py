@@ -121,7 +121,7 @@ def simulate(ticker_df,risk,simulations_amount,years):
     elif risk == "mid":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
-            weights=[0.15, 0.15, 0.15, 0.15, 0.20, 0.20],
+            weights=[0.15, 0.15, 0.15, 0.15, 0.20, 0.20,0.0],
             num_simulation=simulations_amount,
             num_trading_days=252*years,
         )
@@ -129,7 +129,7 @@ def simulate(ticker_df,risk,simulations_amount,years):
     elif risk == "low":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
-            weights=[0.20, 0.20, 0.20, 0.20, 0.20],
+            weights=[0.20, 0.20, 0.20, 0.20, 0.20,0.0],
             num_simulation=simulations_amount,
             num_trading_days=252*years,
         )
