@@ -8,7 +8,9 @@ from datetime import datetime,timedelta
 import pandas as pd
 
 
-def get_crypto_df(from_date=datetime(2018,1,1),to_date=datetime.now()-timedelta(days=1),crypto_exchange=["BTC/USD", "ETH/USD"]):
+def get_crypto_df(from_date=datetime(2018,1,1),
+                  to_date=datetime.now()-timedelta(days=1),
+                  crypto_exchange=["BTC/USD", "ETH/USD"]):
     """Gets live Crypto Data
 
     Keyword arguments:
@@ -31,7 +33,7 @@ def get_crypto_df(from_date=datetime(2018,1,1),to_date=datetime.now()-timedelta(
     crypto_dict = {}
 
     for crypto in crypto_exchange:
-        crypto_dict[crypto] = crypto_df[crypto_df["symbol"]==crypto].drop('symbol',axis=1)
+        crypto_dict[crypto] = crypto_df[crypto_df["symbol"]==crypto].filter(['close'])#.drop('symbol',axis=1)
 
     final_df = pd.concat(crypto_dict.values(),axis=1,keys=crypto_exchange)
 

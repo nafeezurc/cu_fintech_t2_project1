@@ -2,6 +2,7 @@ import stocks
 import sys
 import crypto_alpaca
 import os
+import pandas as pd
 #from dotenv import load_dotenv
 
 
@@ -15,5 +16,13 @@ import os
 
 #print(alpaca_api_key,alpaca_secret_key)
 risk = "high"
-#crypto_df = crypto_alpaca.get_crypto_df()
+crypto_df = crypto_alpaca.get_crypto_df()
 stocks_df = stocks.get_stocks_df(risk)
+
+#print(pd.concat([crypto_df,stocks_df],axis=1))
+crypto_df.index = crypto_df.index.normalize()
+stocks_df.index = stocks_df.index.normalize()
+
+portfolio = pd.concat([stocks_df,crypto_df],axis=1).dropna()
+
+stocks.simulate(risk,portfolio)

@@ -36,7 +36,7 @@ def get_stocks_df(risk="high",
         api_version = "v2"
     )
 
-    SPDR_sectors = ["XLC", "XLY", "XLP", "XLE", "XLF", "XLV", "XLI", "XLB", "XLRE", "XLK", "XLU"]
+    SPDR_sectors = ["XLC", "XLY", "XLP", "XLE", "XLF", "XLV", "XLI", "XLB", "XLRE", "XLK", "XLU","SPY"]
     
     tickers = get_stocks_based_on_risk(risk)
 
@@ -51,14 +51,15 @@ def get_stocks_df(risk="high",
         start=start_date,
         end=end_date
     ).df
-    print(ticker_data)
+    
     ticker_dict = {}
+    #print(ticker_data["symbol"].unique())
+    
+    for ticker in tickers:
+        ticker_dict[ticker] = ticker_data[ticker_data["symbol"]==ticker].filter(['close']) #.drop('symbol', axis=1)
 
-    for ticker in SPDR_sectors:
-        ticker_dict[ticker] = ticker_data[ticker_data["symbol"]==ticker].drop('symbol', axis=1)
-
-    ticker_data = pd.concat(ticker_dict.values(),axis=1, keys=SPDR_sectors)
-
+    ticker_data = pd.concat(ticker_dict.values(),axis=1, keys=tickers)
+    
     return ticker_data
 
 
