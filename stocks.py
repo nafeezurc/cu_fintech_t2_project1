@@ -8,6 +8,8 @@ import yfinance as yf
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 from matplotlib import interactive
+import warnings
+warnings.filterwarnings('ignore')
 
 
 
@@ -66,23 +68,6 @@ def get_stocks_df(risk="high",
     
     return ticker_data
 
-
-def get_stocks_column_value(ticker_df,column):
-    """Selects an specific column from a multi ticker DataFrame
-
-    Keyword arguments:
-    :param DataFrame ticker_df: Contains a ticker DataFrame with multiple tickers
-    :param string risk: risk level [high,mid,low]
-    """
-    dict_close = {}
-
-    for ticker in ticker_df:
-        dict_close[ticker]=ticker_df[ticker].filter([column])
-
-    return pd.concat(dict_close.values(),axis=1,keys=dict_close.keys())
-
-
-
 def get_stocks_based_on_risk(risk):
     """Gets the list of recommended tickers based on the risk level
 
@@ -91,7 +76,7 @@ def get_stocks_based_on_risk(risk):
     """
     # Set the tickers for both the bond and stock portion of the portfolio
     if risk == "high":
-        tickers = ["XLK", "XLY", "IWM", "TMF", "TYD"]
+        tickers = ["XLK", "XLY", "IWM", "TMF", "TYD"] #50/3 - 40/2 -10/2
         
     elif risk == "mid":
         tickers = ["QQQ", "SPY", "DIA", "TLT", "IEF"]
@@ -113,7 +98,7 @@ def simulate(ticker_df,risk,simulations_amount,years):
     if risk == "high":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
-            weights=[0.15, 0.15, 0.15, 0.15,0.20, 0.20,0.0],
+            weights=[0.1667, 0.1666, 0.1667, 0.20,0.20, 0.05,0.05],
             num_simulation=simulations_amount,
             num_trading_days=252*years,
         )
@@ -121,7 +106,7 @@ def simulate(ticker_df,risk,simulations_amount,years):
     elif risk == "mid":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
-            weights=[0.15, 0.15, 0.15, 0.15, 0.20, 0.20,0.0],
+            weights=[0.1667, 0.1666, 0.1667, 0.3, 0.20],
             num_simulation=simulations_amount,
             num_trading_days=252*years,
         )
@@ -129,7 +114,7 @@ def simulate(ticker_df,risk,simulations_amount,years):
     elif risk == "low":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
-            weights=[0.20, 0.20, 0.20, 0.20, 0.20,0.0],
+            weights=[0.20, 0.20, 0.20, 0.20, 0.20],
             num_simulation=simulations_amount,
             num_trading_days=252*years,
         )

@@ -196,10 +196,13 @@ def run():
     stocks_df = stocks.get_stocks_df(risk)
 
     #normalizing date values to have the same day in each index
-    crypto_df.index = crypto_df.index.normalize()
     stocks_df.index = stocks_df.index.normalize()
-    
-    portfolio = pd.concat([stocks_df,crypto_df],axis=1).dropna()
+
+    if(risk=="high"):
+        crypto_df.index = crypto_df.index.normalize()
+        portfolio = pd.concat([stocks_df,crypto_df],axis=1).dropna()
+    else:
+        portfolio = stocks_df
 
     print(stocks.simulate(portfolio,risk,300,10))
 
