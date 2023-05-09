@@ -2,3 +2,5 @@ api.env
 __pycache__/*
 
 test.py
+
+output_data/

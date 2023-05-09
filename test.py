@@ -7,12 +7,12 @@ import pandas as pd
 
 
 # Load the environment variables from the .env file
-#by calling the load_dotenv function
-#load_dotenv('api.env')
+# by calling the load_dotenv function
+# load_dotenv('api.env')
     
 # Set the variables for the Alpaca API and secret keys
-#alpaca_api_key = os.getenv("ALPACA_API_KEY")
-#alpaca_secret_key = os.getenv("ALPACA_SECRET_KEY")
+# alpaca_api_key = os.getenv("ALPACA_API_KEY")
+# alpaca_secret_key = os.getenv("ALPACA_SECRET_KEY")
 
 #print(alpaca_api_key,alpaca_secret_key)
 risk = "high"
