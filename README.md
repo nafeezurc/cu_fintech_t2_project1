@@ -20,7 +20,9 @@ Data from that simulation.
 Alpaca - https://github.com/alpacahq/alpaca-py 
 
 # TODO
+
 add the actual on what they want to invest, in the code and in the slides
 code efficient frontier
 make sure everything is included in the slides
 image of answweing questionaries
+change location of run function
