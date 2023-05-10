@@ -4,3 +4,5 @@ __pycache__/*
 test.py
 
 output_data/
+
+utils/__pycache__/*

@@ -1,6 +1,6 @@
-import stocks
+import utils.stocks as stocks
 import sys
-import crypto_alpaca
+import utils.crypto_alpaca as crypto_alpaca
 import os
 import pandas as pd
 #from dotenv import load_dotenv
