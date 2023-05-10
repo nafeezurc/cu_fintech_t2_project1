@@ -203,6 +203,8 @@ def run():
     crypto_df = crypto_alpaca.get_crypto_df()
     stocks_df = stocks.get_stocks_df(risk)
 
+    stocks.plot_portfolio_pie(risk)
+
     #normalizing date values to have the same day in each index
     stocks_df.index = stocks_df.index.normalize()
 

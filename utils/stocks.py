@@ -98,7 +98,7 @@ def simulate(ticker_df,risk,simulations_amount,years):
     if risk == "high":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
-            weights=[0.1667, 0.1666, 0.1667, 0.20,0.20, 0.05,0.05],
+            weights=get_weights_based_on_risk("high"),
             num_simulation=simulations_amount,
             num_trading_days=252*years,
         )
@@ -106,7 +106,7 @@ def simulate(ticker_df,risk,simulations_amount,years):
     elif risk == "mid":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
-            weights=[0.1667, 0.1666, 0.1667, 0.3, 0.20],
+            weights=get_weights_based_on_risk("mid"),
             num_simulation=simulations_amount,
             num_trading_days=252*years,
         )
@@ -114,7 +114,7 @@ def simulate(ticker_df,risk,simulations_amount,years):
     elif risk == "low":
         MC_simulation = MCSimulation(
             portfolio_data=ticker_df,
-            weights=[0.20, 0.20, 0.20, 0.20, 0.20],
+            weights=get_weights_based_on_risk("low"),
             num_simulation=simulations_amount,
             num_trading_days=252*years,
         )
@@ -124,6 +124,8 @@ def simulate(ticker_df,risk,simulations_amount,years):
 
     interactive(False)
     #Plots the simulation results
+    fig1, ax1 = plt.subplots()
+
     a=MC_simulation.plot_simulation()
     plt.figure(1)
 
@@ -134,3 +136,24 @@ def simulate(ticker_df,risk,simulations_amount,years):
 
     #returns the distribution summary table (statistical results)
     return MC_simulation.summarize_cumulative_return()
+
+def get_weights_based_on_risk(risk):
+    if risk=='high':
+        return [0.1667, 0.1666, 0.1667, 0.20,0.20, 0.05,0.05]
+    elif risk =="mid": 
+        return [0.1667, 0.1666, 0.1667, 0.3, 0.20]
+    elif risk == "low":
+        return [0.20, 0.20, 0.20, 0.20, 0.20]
+    
+def plot_portfolio_pie(risk,name):
+    weights = get_weights_based_on_risk(risk)
+    stocks = get_stocks_based_on_risk(risk)
+
+    if risk == "high":
+        stocks + ['BTC/USD'] + ['ETH/USD']
+    
+    fig1, ax1 = plt.subplots()
+    ax1.pie(weights , labels=stocks, autopct='%1.1f%%',shadow=True, startangle=90,title=f"{name}'s {risk} Risk Portofolio")
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+    plt.show()
