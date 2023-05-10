@@ -3,9 +3,11 @@ import fire
 import questionary
 from questionary import Validator, ValidationError, prompt
 from questionary import Style
-import stocks
-import crypto_alpaca
+import utils.stocks as stocks
+import utils.crypto_alpaca as crypto_alpaca
 import pandas as pd
+import hvplot.pandas
+from utils.helper import get_years_from_answer
 
 
 # Applying style to the input questions
@@ -182,11 +184,17 @@ def interpret(customer_data):
     
 
 def run():
+    #Simulations Number
+    simulations_number = 400
+
     #starts questionary and stores the data in a list
     customer_responses = customer_data()
     
     #deconstructs name an income for later use from customer_responses list
-    name,*_,investment_amount = customer_responses
+    name,*_,investment_timeframe,investment_amount = customer_responses
+
+    #get Investment Timeframe in years
+    investment_timeframe = int(get_years_from_answer(investment_timeframe))
 
     #gets risk level from response interpretation
     _, risk = interpret(customer_responses)
@@ -204,7 +212,7 @@ def run():
     else:
         portfolio = stocks_df
 
-    print(stocks.simulate(portfolio,risk,300,10))
+    results_table = stocks.simulate(portfolio,risk,simulations_number,investment_timeframe)
 
 if __name__ == "__main__":
     fire.Fire(run)
