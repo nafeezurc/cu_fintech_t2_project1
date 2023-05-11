@@ -5,4 +5,8 @@ test.py
 
 output_data/
 
+<<<<<<< HEAD
+env/
+=======
 utils/__pycache__/*
+>>>>>>> 38098987cc175fa5fcc0b2514d636c4945b113e8
