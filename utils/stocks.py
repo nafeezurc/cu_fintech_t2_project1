@@ -3,7 +3,7 @@ import sys
 import pandas as pd
 from dotenv import load_dotenv
 import alpaca_trade_api as tradeapi
-from MCForecastTools import MCSimulation
+from utils.MCForecastTools import MCSimulation
 import yfinance as yf
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
