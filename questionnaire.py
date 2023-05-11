@@ -7,7 +7,8 @@ import utils.stocks as stocks
 import utils.crypto_alpaca as crypto_alpaca
 import pandas as pd
 import hvplot.pandas
-from utils.helper import get_years_from_answer
+from utils.helper import get_years_from_answer,interpret_results
+import matplotlib.pyplot as plt
 
 
 # Applying style to the input questions
@@ -130,7 +131,7 @@ def customer_data():
     ).ask()
 
     # Taking the inputs from customer and creating a list
-    answers = [name, income, word, expect, protect, unexpected,investment_timeframe, investment_amount]
+    answers = [name, income, word, expect, protect, unexpected,investment_timeframe, float(investment_amount)]
     return answers
 
 # Function to interprit the customer inputs and assigming values to calcuate risk levels
@@ -185,7 +186,7 @@ def interpret(customer_data):
 
 def run():
     #Simulations Number
-    simulations_number = 400
+    simulations_number = 500
 
     #starts questionary and stores the data in a list
     customer_responses = customer_data()
@@ -203,7 +204,9 @@ def run():
     crypto_df = crypto_alpaca.get_crypto_df()
     stocks_df = stocks.get_stocks_df(risk)
 
-    stocks.plot_portfolio_pie(risk)
+    plt.figure(1)
+    ax = stocks.plot_portfolio_pie(risk,name)
+    #plt.subplot(111)
 
     #normalizing date values to have the same day in each index
     stocks_df.index = stocks_df.index.normalize()
@@ -215,6 +218,8 @@ def run():
         portfolio = stocks_df
 
     results_table = stocks.simulate(portfolio,risk,simulations_number,investment_timeframe)
+
+    print(interpret_results(results_table,investment_amount,name,investment_timeframe))
 
 if __name__ == "__main__":
     fire.Fire(run)

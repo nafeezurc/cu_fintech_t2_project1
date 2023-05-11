@@ -126,13 +126,10 @@ def simulate(ticker_df,risk,simulations_amount,years):
     #Plots the simulation results
     fig1, ax1 = plt.subplots()
 
-    a=MC_simulation.plot_simulation()
-    plt.figure(1)
+    MC_simulation.plot_simulation()
 
     #Plots the result distribution for each iteration.
-    b=MC_simulation.plot_distribution()
-    plt.figure(2)
-    plt.show()
+    MC_simulation.plot_distribution()
 
     #returns the distribution summary table (statistical results)
     return MC_simulation.summarize_cumulative_return()
@@ -153,7 +150,7 @@ def plot_portfolio_pie(risk,name):
         stocks + ['BTC/USD'] + ['ETH/USD']
     
     fig1, ax1 = plt.subplots()
-    ax1.pie(weights , labels=stocks, autopct='%1.1f%%',shadow=True, startangle=90,title=f"{name}'s {risk} Risk Portofolio")
+    ax1.pie(weights , labels=stocks, autopct='%1.1f%%',shadow=True, startangle=90) #,title=f"{name}'s {risk} Risk Portofolio"
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-
+    
     plt.show()
