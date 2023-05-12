@@ -26,3 +26,13 @@ code efficient frontier
 make sure everything is included in the slides
 image of answweing questionaries
 change location of run function
+
+Things to Add to the readme
+- Questionnaire
+- Weights for each questions
+- Data Collection
+- Asset allocation (historical Beta, optimum for the crypto)
+- Visualizion charts
+- How to use
+- Pre-reqs
+
