@@ -148,7 +148,7 @@ def plot_portfolio_pie(risk,name):
     stocks = get_stocks_based_on_risk(risk)
 
     if risk == "high":
-        stocks + ['BTC/USD'] + ['ETH/USD']
+       stocks =  stocks + ['BTC/USD'] + ['ETH/USD']
     
     fig1, ax1 = plt.subplots()
     ax1.pie(weights , labels=stocks, autopct='%1.1f%%',shadow=True, startangle=90) #,title=f"{name}'s {risk} Risk Portofolio"

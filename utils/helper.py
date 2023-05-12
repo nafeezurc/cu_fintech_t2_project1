@@ -12,8 +12,8 @@ def interpret_results(table,initial_investment,name,investment_timeframe):
 
     return f"""
           {name}, with your current investment of ${initial_investment}.
-          You will get an  estimated return of {round(mean*100,2)}%
-        with a total between ${round(lower_95*initial_investment,2)} years and 
+          You will get an annualized return of {round(mean*100/investment_timeframe,2)}%
+        with a total between ${round(lower_95*initial_investment,2)} and 
         ${round(upper_95*initial_investment,2)} in {investment_timeframe} years.
           """
     
