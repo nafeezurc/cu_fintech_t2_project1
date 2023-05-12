@@ -32,6 +32,7 @@ Things to Add to the readme
 - Weights for each questions
 - Data Collection
 - Asset allocation (historical Beta, optimum for the crypto)
+- Visualizion charts
 - How to use
 - Pre-reqs
 
