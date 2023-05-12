@@ -125,13 +125,14 @@ def simulate(ticker_df,risk,simulations_amount,years):
     interactive(False)
     #Plots the simulation results
     fig1, ax1 = plt.subplots()
-
+    
     MC_simulation.plot_simulation()
-
     #Plots the result distribution for each iteration.
-    MC_simulation.plot_distribution()
 
+    fig2, ax2 = plt.subplots()
+    MC_simulation.plot_distribution()
     #returns the distribution summary table (statistical results)
+    plt.show()
     return MC_simulation.summarize_cumulative_return()
 
 def get_weights_based_on_risk(risk):
@@ -152,5 +153,5 @@ def plot_portfolio_pie(risk,name):
     fig1, ax1 = plt.subplots()
     ax1.pie(weights , labels=stocks, autopct='%1.1f%%',shadow=True, startangle=90) #,title=f"{name}'s {risk} Risk Portofolio"
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    
+
     plt.show()
