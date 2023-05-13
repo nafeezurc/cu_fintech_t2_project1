@@ -1,23 +1,30 @@
-### I-invest
+# I-invest App
 
 <img src="./imgs/i-invest.png">
 
 I-invest is a python application that recommends to the user a portfolio based upon their risk tolerance.
 Out of 11 ETF's stock & bonds sectors with 2 different cryptos I-invest will determine the best portfolio return based on the projected risk return methodology with the use of Monte Carlo simulation.
 
-## Usage
 
 An individual will answers a questionnaire with a series of 8 questions to determine their risk tolerance.
 Each question will have a certain weight that will be calculated at the end of the questioner.
 The user will be asked for the username with expected time frame and the amount of investment.
 
-The types are users risk tolerance and portfolio weights:
-Aggressive: User questionnaire results above 30 is categorized as a high risk investor. Aggressive risk investors are well versed with the market and take huge risks. 
-Weights for aggressive investors would be 50% stocks and 40% bonds and 10% cryptos.
-Moderate:User questionnaire results between 20 and 30 is categorized as a moderate risk investor.  Moderate risk investors are relatively less risk-tolerant when compared to aggressive risk investors. 50% Stocks and 50% bonds 
-Conservative/Low: User questionnaire results between 10 and 20 is categorized as a Conservative/Low risk investor. Conservative/Low risk investors take the least risk in the market
+#### User Questionnaire
+<img src="./imgs/questions.png">
+
+
+The types are users risk tolerance and portfolio weights: <br>
+
+**Aggressive**: User questionnaire results above 30 is categorized as a high risk investor. Aggressive risk investors are well versed with the market and take huge risks. 
+Weights for aggressive investors would be 50% stocks and 40% bonds and 10% cryptos. <br>
+
+**Moderate**:User questionnaire results between 20 and 30 is categorized as a moderate risk investor.  Moderate risk investors are relatively less risk-tolerant when compared to aggressive risk investors. 50% Stocks and 50% bonds <br>
+
+**Conservative/Low**: User questionnaire results between 10 and 20 is categorized as a Conservative/Low risk investor. Conservative/Low risk investors take the least risk in the market
 The portfolio that is generated will have different weights designed based upon our insight of their risk tolerance. 
-Weights: 40% Stocks and 60% bonds
+Weights: 40% Stocks and 60% bonds <br>
+
 
 ---
 
