@@ -1,18 +1,31 @@
 ### PY invest
 
-PY invest is a python application that gives a user a portfolio based upon their risk tolerance.
-Out of 11 stock sectors and 2 different cryptos py invest will determine based off of the assets volatility and the users risk what to hold and how much to hold.
+I-invest is a python application that recommends to the user a portfolio based upon their risk tolerance.
+Out of 11 ETF's stock & bonds sectors with 2 different cryptos I-invest will determine the best portfolio return based on the projected risk return methodology with the use of Monte Carlo simulation.
 
 ## Usage
 
-An indivdual answers a series of 8 questions so that way we can determine their risk tolerance.
-The portfolio that is generated will be different based upon our insight of their risk tolerance. 
+An individual will answers a questioner a series of 8 questions to determine their risk tolerance.
+Each question will have a certain weight that will be calculated at the end of the questioner.
+The user will be asked for the username with expected time frame and the amount of investment.
+
+The types are users risk tolerance and portfolio weights:
+Aggressive: Aggressive risk investors are well versed with the market and take huge risks. 
+Weights for aggressive investor would be 40% stocks and 20% bonds and 10% cryptos.
+Moderate: Moderate risk investors are relatively less risk-tolerant when compared to aggressive risk investors. 40% Stocks and 60% bonds 
+Conservative: Conservative investors take the least risk in the market
+The portfolio that is generated will have different weights designed based upon our insight of their risk tolerance. 
+Weights: 30% Stocks and 70% bonds
+
+## Data Collection: importing the closing of all S&P ETFs 
+## Stock & Bonds ETF Asset allocation: with the use of historical beta to determine the level of risk of each ETF 
+## Crypto asset allocation : the optimal crypto in the market.
+##
 
 ## Output
 
-The past performance of all the stocks, and if needed, cryptos in the given portfolio.
-A Monte Carlo simulization of the predicted returns.
-Data from that simulation.
+- The user will get after submitting the questioner a pie chart with exact weights for his portfolio.
+- The final output would be the projected return based on the Monte Carlo simulation.
 
 
 # Sources
