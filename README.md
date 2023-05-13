@@ -19,8 +19,8 @@ Weights: 30% Stocks and 70% bonds
 
 ## Data collection & assets allocation
 
-- Data Collection: importing the closing of all S&P ETFs 
-- Stock & Bonds ETF Asset allocation: with the use of historical beta to determine the level of risk of each ETF 
+- Data Collection: importing a 5 years closing price for the top performed ETFs in the market.
+- Stock & Bonds ETF Asset allocation: with the use of 5 years historical beta to determine the level of risk of each ETF 
 - Crypto asset allocation : the optimal crypto in the market.
 
 
