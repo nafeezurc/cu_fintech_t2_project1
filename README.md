@@ -17,10 +17,12 @@ Conservative: Conservative investors take the least risk in the market
 The portfolio that is generated will have different weights designed based upon our insight of their risk tolerance. 
 Weights: 30% Stocks and 70% bonds
 
-## Data Collection: importing the closing of all S&P ETFs 
-## Stock & Bonds ETF Asset allocation: with the use of historical beta to determine the level of risk of each ETF 
-## Crypto asset allocation : the optimal crypto in the market.
-##
+## Data collection & assets allocation
+
+- Data Collection: importing the closing of all S&P ETFs 
+- Stock & Bonds ETF Asset allocation: with the use of historical beta to determine the level of risk of each ETF 
+- Crypto asset allocation : the optimal crypto in the market.
+
 
 ## Output
 
