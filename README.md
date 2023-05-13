@@ -93,8 +93,8 @@ To use the application, follow the steps below.
     > cd i-invest
 
 2.  Create a .env file on the folder for the project and store the alpaca API keys
-    > alpaca_api_key={key}
-    > alpaca_secret_key={secret_key}
+    > alpaca_api_key={key} <br>
+    > alpaca_secret_key={secret_key} <br>
    
 3. Run python app.py on terminal
 
