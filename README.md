@@ -1,4 +1,4 @@
-### PY invest
+### I-invest
 
 I-invest is a python application that recommends to the user a portfolio based upon their risk tolerance.
 Out of 11 ETF's stock & bonds sectors with 2 different cryptos I-invest will determine the best portfolio return based on the projected risk return methodology with the use of Monte Carlo simulation.
